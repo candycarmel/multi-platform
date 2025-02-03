@@ -1,8 +1,9 @@
 // @ts-nocheck
-import { defineConfig } from "vite";
-import { viteSingleFile } from "vite-plugin-singlefile"
 
-// https://vitejs.dev/config/
+import { viteSingleFile } from "vite-plugin-singlefile";
+import { defineConfig } from "vite";
+import geckos from '@geckos.io/server'
+
 export default defineConfig(async () => ({
   // Vite options tailored for Tauri development and only applied in `tauri dev` or `tauri build`
   //
@@ -18,7 +19,7 @@ export default defineConfig(async () => ({
       ignored: ["**/src-tauri/**"],
     },
   },
-  publicDir: "./assets",
+  publicDir: "./public",
   build: {
     minify: "terser",
     chunkSizeWarningLimit: 10000,
