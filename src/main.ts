@@ -157,6 +157,20 @@ scene("game", () => {
         channel.emit("join-response", channel.id);
     });
 
+    channel.on("player-left", (data) => {
+        let allPlayers = get("bean");
+
+        for (let i = 0; i < allPlayers.length; i++)
+        {
+            if (allPlayers[i].playerID == data)
+            {
+                destroy(allPlayers[i]);
+                debug.log("player " + data + " left");
+                return;
+            }
+        }
+    });
+
     channel.on("input-frame", (data) => {
         // debug.log(data);
         let newData = data as string[]

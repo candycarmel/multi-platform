@@ -18,7 +18,7 @@ io.listen(9208) // default port is 9208
 
 io.onConnection(channel => {
     channel.onDisconnect(() => {
-        console.log(`${channel.id} got disconnected`)
+        channel.broadcast.emit("player-left", channel.id);
     });
 
     channel.on("join-time", (data) => {  
